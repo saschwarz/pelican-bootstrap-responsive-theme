@@ -10,7 +10,8 @@
     <meta name="author" content="{{ AUTHOR }}">
     {% block feeds %}
     {% if FEED_ALL_ATOM %}
-    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+    <!-- <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" /> -->
+    <link href="http://feeds.feedburner.com/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
     {% endif %}
     {% if FEED_ALL_RSS %}
     <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
