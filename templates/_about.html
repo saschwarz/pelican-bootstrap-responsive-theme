@@ -1,5 +1,9 @@
-<img src="{{ AUTHOR_PHOTO }}"/>
+<div class="author">
+{% if AUTHOR_IMAGE %}
+<img src="{{ AUTHOR_IMAGE }}" class="img-rounded"/>
+{% endif %}
 <h4>About</h4>
-<div>
+<div class="author-about">
   {{ AUTHOR_ABOUT }}
+</div>
 </div>
