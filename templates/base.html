@@ -2,81 +2,92 @@
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="{{ AUTHOR }}">
-    {% block feeds %}
-    {% if FEED_ALL_ATOM %}
+    <meta name="author" content="{{ AUTHOR }}"> {% block feeds %} {% if FEED_ALL_ATOM %}
     <!-- <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" /> -->
-    <link href="http://feeds.feedburner.com/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
-    {% endif %}
-    {% if FEED_ALL_RSS %}
-    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
-    {% endif %}
-    {% endblock %}
+    <link href="https://feeds.feedburner.com/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" /> {% endif %} {% if FEED_ALL_RSS %}
+    <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" /> {% endif %} {% endblock %}
     <!-- Le styles -->
     <link href="{{ SITEURL }}/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-      body {
-      padding-top: 60px;
-      padding-bottom: 40px;
-      }
-      .sidebar-nav {
-      padding: 9px 0;
-      }
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                margin-top: 2em;
+                border-top: 1px solid #e3e3e3;
+                padding-top: 1em;
+            }
+
+            .sidebar .search {
+                margin-bottom: 0;
+            }
+        }
     </style>
     <link href="{{ SITEURL }}/theme/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
-    {% include "analytics.html" %}
-    {% include "disqus.html" %}
-  </head>
-  <body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-    {% include "facebook.html" %}
-    {% include "github.html" %}
-    
-    {% include "_header.html" %}
+    <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet"> {% include "analytics.html" %}
+</head>
+
+<body>
+    <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+    {% include "facebook.html" %} {% include "github.html" %} {% include "_header.html" %}
 
     <div class="container-fluid">
-      <div class="row-fluid">
-	<div class="span1">&nbsp;</div>
-	<div class="span10">
-	  <div class="row-fluid">
-            <div class="span9">
-	      {% block indextitle %}
-	      <div class="page-header">
-		<h1>{% block title %} {{ self.windowtitle() }} {% endblock %}</h1>
-	      </div>
-	      {% endblock %}
-	      {% block content %}{% endblock %}
-            </div><!--/span-->
+        <div class="row-fluid">
+            <div class="span1">&nbsp;</div>
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span9">
+                        {% block indextitle %}
+                        <div class="page-header">
+                            <h1>{% block title %} {{ self.windowtitle() }} {% endblock %}</h1>
+                        </div>
+                        {% endblock %} {% block content %}{% endblock %}
+                    </div>
+                    <!--/span-->
 
-	    <div class="span3">
-	      {% include "_sidebar.html" %}
-              {% include "_search.html" %}
-            </div><!--/span-->
+                    <div class="span3 sidebar">
+                        {% include "_search.html" %} {% include "_sidebar.html" %}
+                    </div>
+                    <!--/span-->
 
-	  </div>
-	</div>
-      </div><!--/row-->
+                </div>
+            </div>
+        </div>
+        <!--/row-->
 
-      <hr>
+        <hr>
 
-      <footer>
-        <p>Powered by <a href="http://blog.getpelican.com/">Pelican</a></p>
-	<p>&copy; {{ AUTHOR }} {{ COPYRIGHT_DATE }}</p>
-      </footer>
+        <footer>
+            <span>Powered by <a href="http://blog.getpelican.com/">Pelican</a></span>
+            <span class="pull-right">&copy; {{ AUTHOR }} {{ COPYRIGHT_DATE }}</span>
+        </footer>
 
-    </div><!--/.fluid-container-->
+    </div>
+    <!--/.fluid-container-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"><\/script>')</script>
-      <script src="{{ SITEURL }}/theme/bootstrap/js/bootstrap.min.js"></script>
-      <script src="{{ SITEURL }}/theme/js/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"><\/script>')
+    </script>
+    <script src="{{ SITEURL }}/theme/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ SITEURL }}/theme/js/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+    {% include 'disqus_script.html' %}
+</body>
 
-  </body>
 </html>
